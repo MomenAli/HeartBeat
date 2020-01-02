@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=HeartBeat.X
+PROJECTNAME=HeartBeat
 
 # Active Configuration
 DEFAULTCONF=default
