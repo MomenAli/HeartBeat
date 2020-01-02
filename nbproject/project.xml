@@ -6,7 +6,7 @@
             <name>HeartBeat</name>
             <creation-uuid>d1181fcc-4f47-4504-bb35-fa98284d052f</creation-uuid>
             <make-project-type>0</make-project-type>
-            <c-extensions/>
+            <c-extensions>c</c-extensions>
             <cpp-extensions/>
             <header-extensions>h</header-extensions>
             <asminc-extensions/>
