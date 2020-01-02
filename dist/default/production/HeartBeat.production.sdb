@@ -3,3 +3,14 @@
 [d edition pro ]
 [d chip 16F877A ]
 [d frameptr 0 ]
+"14 D:\bootcamp\Device_Drivers\Labs\Mine\HeartBeat\HeartBeat\Led.c
+[e E859 . `uc
+LED1 0
+LED2 1
+LED3 2
+LED4 3
+]
+[e E865 . `uc
+LED_OFF 0
+LED_ON 1
+]
