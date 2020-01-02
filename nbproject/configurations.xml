@@ -8,6 +8,7 @@
       <itemPath>Port.h</itemPath>
       <itemPath>GPIO.h</itemPath>
       <itemPath>Led.h</itemPath>
+      <itemPath>Util.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -18,6 +19,7 @@
                    projectFiles="true">
       <itemPath>GPIO.c</itemPath>
       <itemPath>Led.c</itemPath>
+      <itemPath>Util.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
