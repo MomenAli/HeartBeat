@@ -21,16 +21,16 @@ u8_t LED_Init(LED_t led, LEDState_t state)
     switch(led)
     {
         case LED1:
-            ret = GPIO_init_pin(LED_1_DIR,LED_1_PIN,GPIO_OUT);
+            ret = GPIO_Init_Pin(&LED_1_DIR,LED_1_PIN,GPIO_OUT);
             break;
         case LED2:
-            ret = GPIO_init_pin(LED_2_DIR,LED_2_PIN,GPIO_OUT);
+            ret = GPIO_Init_Pin(&LED_2_DIR,LED_2_PIN,GPIO_OUT);
             break;
         case LED3:
-            ret = GPIO_init_pin(LED_3_DIR,LED_3_PIN,GPIO_OUT);
+            ret = GPIO_Init_Pin(&LED_3_DIR,LED_3_PIN,GPIO_OUT);
             break;
         case LED4:
-            ret = GPIO_init_pin(LED_4_DIR,LED_4_PIN,GPIO_OUT);
+            ret = GPIO_Init_Pin(&LED_4_DIR,LED_4_PIN,GPIO_OUT);
             break;
         default: ret = 0;
     }
@@ -94,7 +94,7 @@ void LED_Toggle(LED_t led)
 {
     if(LED_GetState(led))
     {
-        LED_SetState(led,LED_ON);
+        LED_SetState(led,LED_OFF);
     }
     else
     {

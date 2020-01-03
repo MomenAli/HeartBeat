@@ -12,7 +12,7 @@
 #define	__UTIL_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-
+#include"HW.h"
 /* this function make a delay on processing
  * the rest of the program for n m second. */
 void Delay_ms(u16_t delay);

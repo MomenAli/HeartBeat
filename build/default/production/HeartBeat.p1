@@ -1,35 +1,21 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"1325 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1325: extern volatile unsigned char TRISA __attribute__((address(0x085)));
-[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
-"1375
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
-[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
-"1437
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1437: extern volatile unsigned char TRISC __attribute__((address(0x087)));
-[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
-"1499
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1499: extern volatile unsigned char TRISD __attribute__((address(0x088)));
-[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"1561
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1561: extern volatile unsigned char TRISE __attribute__((address(0x089)));
-[v _TRISE `Vuc ~T0 @X0 0 e@137 ]
-"37 ./HW.h
-[p x FOSC = HS ]
-"38
-[p x WDTE = OFF ]
-"39
-[p x PWRTE = OFF ]
-"40
-[p x BOREN = OFF ]
-"41
-[p x LVP = OFF ]
-"42
-[p x CPD = OFF ]
-"43
-[p x WRT = OFF ]
-"44
-[p x CP = OFF ]
+[p mainexit ]
+"21 HeartBeat.c
+[; ;HeartBeat.c: 21:     LED_Init(LED1,LED_OFF);
+[c E916 0 1 2 3 .. ]
+[n E916 . LED1 LED2 LED3 LED4  ]
+[c E922 0 1 .. ]
+[n E922 . LED_OFF LED_ON  ]
+"52 ./Led.h
+[; ;./Led.h: 52: u8_t LED_Init(LED_t led, LEDState_t state);
+[v _LED_Init `(uc ~T0 @X0 0 ef2`E916`E922 ]
+"56
+[; ;./Led.h: 56: void LED_Toggle(LED_t led);
+[v _LED_Toggle `(v ~T0 @X0 0 ef1`E916 ]
+[v F842 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
+[v __delay `JF842 ~T0 @X0 0 e ]
+[p i __delay ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -210,108 +196,64 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"14 GPIO.c
-[; ;GPIO.c: 14: u8_t GPIO_Init_Port(u8_t * DirRegAddress,u8_t dir)
-[v _GPIO_Init_Port `(uc ~T0 @X0 1 ef2`*uc`uc ]
-"15
-[; ;GPIO.c: 15: {
+"37 ./HW.h
+[p x FOSC = HS ]
+"38
+[p x WDTE = OFF ]
+"39
+[p x PWRTE = OFF ]
+"40
+[p x BOREN = OFF ]
+"41
+[p x LVP = OFF ]
+"42
+[p x CPD = OFF ]
+"43
+[p x WRT = OFF ]
+"44
+[p x CP = OFF ]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"18 HeartBeat.c
+[; ;HeartBeat.c: 18: void main(void) {
+[v _main `(v ~T0 @X0 1 ef ]
 {
-[e :U _GPIO_Init_Port ]
-"14
-[; ;GPIO.c: 14: u8_t GPIO_Init_Port(u8_t * DirRegAddress,u8_t dir)
-[v _DirRegAddress `*uc ~T0 @X0 1 r1 ]
-[v _dir `uc ~T0 @X0 1 r2 ]
-"15
-[; ;GPIO.c: 15: {
+[e :U _main ]
 [f ]
-"16
-[; ;GPIO.c: 16:     u8_t ret =1;
-[v _ret `uc ~T0 @X0 1 a ]
-[e = _ret -> -> 1 `i `uc ]
-"18
-[; ;GPIO.c: 18:     if(*DirRegAddress != (TRISA) && *DirRegAddress != (TRISB) &&
-[e $ ! && && && && != -> *U _DirRegAddress `i -> _TRISA `i != -> *U _DirRegAddress `i -> _TRISB `i != -> *U _DirRegAddress `i -> _TRISC `i != -> *U _DirRegAddress `i -> _TRISD `i != -> *U _DirRegAddress `i -> _TRISE `i 96  ]
 "21
-[; ;GPIO.c: 21:     {
-{
-"23
-[; ;GPIO.c: 23:        ret =0;
-[e = _ret -> -> 0 `i `uc ]
+[; ;HeartBeat.c: 21:     LED_Init(LED1,LED_OFF);
+[e ( _LED_Init (2 , . `E916 0 . `E922 0 ]
+"22
+[; ;HeartBeat.c: 22:     LED_Init(LED2,LED_OFF);
+[e ( _LED_Init (2 , . `E916 1 . `E922 0 ]
 "24
-[; ;GPIO.c: 24:     }
-}
-[e $U 97  ]
-"25
-[; ;GPIO.c: 25:     else
-[e :U 96 ]
-"26
-[; ;GPIO.c: 26:     {
+[; ;HeartBeat.c: 24:     while(1){
+[e :U 98 ]
 {
+"26
+[; ;HeartBeat.c: 26:         LED_Toggle(LED1);
+[e ( _LED_Toggle (1 . `E916 0 ]
 "27
-[; ;GPIO.c: 27:         ((*DirRegAddress)=(dir)?(~0):(0));
-[e = *U _DirRegAddress -> ? != -> _dir `i -> 0 `i : ~ -> 0 `i -> 0 `i `uc ]
+[; ;HeartBeat.c: 27:         _delay((unsigned long)((500)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"28
+[; ;HeartBeat.c: 28:         LED_Toggle(LED1);
+[e ( _LED_Toggle (1 . `E916 0 ]
 "29
-[; ;GPIO.c: 29:     }
+[; ;HeartBeat.c: 29:         LED_Toggle(LED2);
+[e ( _LED_Toggle (1 . `E916 1 ]
+"30
+[; ;HeartBeat.c: 30:         _delay((unsigned long)((500)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"31
+[; ;HeartBeat.c: 31:         LED_Toggle(LED2);
+[e ( _LED_Toggle (1 . `E916 1 ]
+"32
+[; ;HeartBeat.c: 32:     }
 }
 [e :U 97 ]
-"30
-[; ;GPIO.c: 30:     return ret;
-[e ) _ret ]
-[e $UE 95  ]
-"31
-[; ;GPIO.c: 31: }
-[e :UE 95 ]
-}
-"34
-[; ;GPIO.c: 34: u8_t GPIO_Init_Pin(u8_t *DirRegAddress ,u8_t pin_number,u8_t dir )
-[v _GPIO_Init_Pin `(uc ~T0 @X0 1 ef3`*uc`uc`uc ]
-"35
-[; ;GPIO.c: 35: {
-{
-[e :U _GPIO_Init_Pin ]
-"34
-[; ;GPIO.c: 34: u8_t GPIO_Init_Pin(u8_t *DirRegAddress ,u8_t pin_number,u8_t dir )
-[v _DirRegAddress `*uc ~T0 @X0 1 r1 ]
-[v _pin_number `uc ~T0 @X0 1 r2 ]
-[v _dir `uc ~T0 @X0 1 r3 ]
-"35
-[; ;GPIO.c: 35: {
-[f ]
-"36
-[; ;GPIO.c: 36:     u8_t ret = 1;
-[v _ret `uc ~T0 @X0 1 a ]
-[e = _ret -> -> 1 `i `uc ]
-"38
-[; ;GPIO.c: 38:     if(*DirRegAddress != (TRISA) && *DirRegAddress != (TRISB) &&
-[e $ ! && && && && != -> *U _DirRegAddress `i -> _TRISA `i != -> *U _DirRegAddress `i -> _TRISB `i != -> *U _DirRegAddress `i -> _TRISC `i != -> *U _DirRegAddress `i -> _TRISD `i != -> *U _DirRegAddress `i -> _TRISE `i 99  ]
-"41
-[; ;GPIO.c: 41:     {
-{
-"43
-[; ;GPIO.c: 43:        ret = 0;
-[e = _ret -> -> 0 `i `uc ]
-"44
-[; ;GPIO.c: 44:     }
-}
-[e $U 100  ]
-"45
-[; ;GPIO.c: 45:     else
+[e $U 98  ]
 [e :U 99 ]
-"46
-[; ;GPIO.c: 46:     {
-{
-"47
-[; ;GPIO.c: 47:         ((*DirRegAddress)=(*DirRegAddress & ~(1<<pin_number))|(dir<<pin_number));
-[e = *U _DirRegAddress -> | & -> *U _DirRegAddress `i ~ << -> 1 `i -> _pin_number `i << -> _dir `i -> _pin_number `i `uc ]
-"48
-[; ;GPIO.c: 48:     }
-}
-[e :U 100 ]
-"49
-[; ;GPIO.c: 49:     return ret;
-[e ) _ret ]
-[e $UE 98  ]
-"50
-[; ;GPIO.c: 50: }
-[e :UE 98 ]
+"33
+[; ;HeartBeat.c: 33: }
+[e :UE 96 ]
 }

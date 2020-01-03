@@ -58,8 +58,8 @@
 
 
 
-u8_t GPIO_init_port(u8_t DirRegAddress/*direction register address*/,u8_t dir/* I/O*/);
-u8_t GPIO_init_pin(u8_t DirRegAddress/*direction register address*/,u8_t pin_number,u8_t dir/* I/O*/);
+u8_t GPIO_Init_Port(u8_t * DirRegAddress/*direction register address*/,u8_t dir/* DIRECTION*/);
+u8_t GPIO_Init_Pin(u8_t * DirRegAddress/*direction register address*/,u8_t pin_number,u8_t dir/* I/O*/);
 
 #ifdef	__cplusplus
 extern "C" {

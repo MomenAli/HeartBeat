@@ -16,7 +16,22 @@
 
 
 # 1 "./HW.h" 1
-# 34 "./HW.h"
+# 37 "./HW.h"
+#pragma config FOSC = HS
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config BOREN = OFF
+#pragma config LVP = OFF
+#pragma config CPD = OFF
+#pragma config WRT = OFF
+#pragma config CP = OFF
+# 89 "./HW.h"
+typedef unsigned char u8_t;
+typedef unsigned int u16_t;
+# 9 "GPIO.c" 2
+
+# 1 "./GPIO.h" 1
+# 34 "./GPIO.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1730,55 +1745,49 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 34 "./HW.h" 2
-# 80 "./HW.h"
-typedef unsigned char u8_t;
-typedef unsigned int u16_t;
-# 9 "GPIO.c" 2
-
-# 1 "./GPIO.h" 1
+# 34 "./GPIO.h" 2
 # 61 "./GPIO.h"
-u8_t GPIO_init_port(u8_t DirRegAddress ,u8_t dir );
-u8_t GPIO_init_pin(u8_t DirRegAddress ,u8_t pin_number,u8_t dir );
+u8_t GPIO_Init_Port(u8_t * DirRegAddress,u8_t dir);
+u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
 # 10 "GPIO.c" 2
 
 
 
 
-u8_t GPIO_init_port(u8_t DirRegAddress ,u8_t dir )
+u8_t GPIO_Init_Port(u8_t * DirRegAddress,u8_t dir)
 {
-    u8_t ret = 1;
+    u8_t ret =1;
 
-    if(DirRegAddress != (TRISA) && DirRegAddress != (TRISB) &&
-       DirRegAddress != (TRISC) &&DirRegAddress != (TRISD) &&
-       DirRegAddress != (TRISE))
+    if(*DirRegAddress != (TRISA) && *DirRegAddress != (TRISB) &&
+       *DirRegAddress != (TRISC) && *DirRegAddress != (TRISD) &&
+       *DirRegAddress != (TRISE))
     {
 
        ret =0;
     }
     else
     {
-        ((DirRegAddress)=(dir)?(~0):(0));
+        ((*DirRegAddress)=(dir)?(~0):(0));
 
     }
     return ret;
 }
 
 
-u8_t GPIO_init_pin(u8_t DirRegAddress ,u8_t pin_number,u8_t dir )
+u8_t GPIO_Init_Pin(u8_t *DirRegAddress ,u8_t pin_number,u8_t dir )
 {
     u8_t ret = 1;
 
-    if(DirRegAddress != (TRISA) && DirRegAddress != (TRISB) &&
-       DirRegAddress != (TRISC) &&DirRegAddress != (TRISD) &&
-       DirRegAddress != (TRISE))
+    if(*DirRegAddress != (TRISA) && *DirRegAddress != (TRISB) &&
+       *DirRegAddress != (TRISC) &&*DirRegAddress != (TRISD) &&
+       *DirRegAddress != (TRISE))
     {
 
        ret = 0;
     }
     else
     {
-        ((DirRegAddress)=(DirRegAddress & ~(1<<pin_number))|(dir<<pin_number));
+        ((*DirRegAddress)=(*DirRegAddress & ~(1<<pin_number))|(dir<<pin_number));
     }
     return ret;
 }

@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=GPIO.c Led.c Util.c
+SOURCEFILES_QUOTED_IF_SPACED=HeartBeat.c GPIO.c Led.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Led.p1 ${OBJECTDIR}/Util.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/GPIO.p1.d ${OBJECTDIR}/Led.p1.d ${OBJECTDIR}/Util.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/HeartBeat.p1 ${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Led.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/HeartBeat.p1.d ${OBJECTDIR}/GPIO.p1.d ${OBJECTDIR}/Led.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Led.p1 ${OBJECTDIR}/Util.p1
+OBJECTFILES=${OBJECTDIR}/HeartBeat.p1 ${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Led.p1
 
 # Source Files
-SOURCEFILES=GPIO.c Led.c Util.c
+SOURCEFILES=HeartBeat.c GPIO.c Led.c
 
 
 
@@ -94,6 +94,14 @@ MP_PROCESSOR_OPTION=16F877A
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/HeartBeat.p1: HeartBeat.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/HeartBeat.p1.d 
+	@${RM} ${OBJECTDIR}/HeartBeat.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/HeartBeat.p1 HeartBeat.c 
+	@-${MV} ${OBJECTDIR}/HeartBeat.d ${OBJECTDIR}/HeartBeat.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/HeartBeat.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/GPIO.p1: GPIO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/GPIO.p1.d 
@@ -110,15 +118,15 @@ ${OBJECTDIR}/Led.p1: Led.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/Led.d ${OBJECTDIR}/Led.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Led.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/Util.p1: Util.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Util.p1.d 
-	@${RM} ${OBJECTDIR}/Util.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/Util.p1 Util.c 
-	@-${MV} ${OBJECTDIR}/Util.d ${OBJECTDIR}/Util.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/Util.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 else
+${OBJECTDIR}/HeartBeat.p1: HeartBeat.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/HeartBeat.p1.d 
+	@${RM} ${OBJECTDIR}/HeartBeat.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/HeartBeat.p1 HeartBeat.c 
+	@-${MV} ${OBJECTDIR}/HeartBeat.d ${OBJECTDIR}/HeartBeat.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/HeartBeat.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/GPIO.p1: GPIO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/GPIO.p1.d 
@@ -134,14 +142,6 @@ ${OBJECTDIR}/Led.p1: Led.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/Led.p1 Led.c 
 	@-${MV} ${OBJECTDIR}/Led.d ${OBJECTDIR}/Led.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Led.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/Util.p1: Util.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Util.p1.d 
-	@${RM} ${OBJECTDIR}/Util.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/Util.p1 Util.c 
-	@-${MV} ${OBJECTDIR}/Util.d ${OBJECTDIR}/Util.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/Util.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

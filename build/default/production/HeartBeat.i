@@ -1,4 +1,4 @@
-# 1 "Led.c"
+# 1 "HeartBeat.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Led.c" 2
+# 1 "HeartBeat.c" 2
 
 
 
@@ -15,23 +15,6 @@
 
 
 
-# 1 "./HW.h" 1
-# 37 "./HW.h"
-#pragma config FOSC = HS
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config BOREN = OFF
-#pragma config LVP = OFF
-#pragma config CPD = OFF
-#pragma config WRT = OFF
-#pragma config CP = OFF
-# 89 "./HW.h"
-typedef unsigned char u8_t;
-typedef unsigned int u16_t;
-# 9 "Led.c" 2
-
-# 1 "./Port.h" 1
-# 34 "./Port.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1745,14 +1728,130 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 34 "./Port.h" 2
-# 10 "Led.c" 2
+# 9 "HeartBeat.c" 2
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 1 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__size_t.h" 1 3
+
+
+
+typedef unsigned size_t;
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__null.h" 1 3
+# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdarg.h" 1 3
+
+
+
+
+
+
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+# 11 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
+# 43 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
+struct __prbuf
+{
+ char * ptr;
+ void (* func)(char);
+};
+# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\conio.h" 1 3
+
+
+
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\errno.h" 1 3
+# 29 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\errno.h" 3
+extern int errno;
+# 8 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\conio.h" 2 3
+
+
+
+
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+
+
+extern char * cgets(char *);
+extern void cputs(const char *);
+# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+# 180 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+# 10 "HeartBeat.c" 2
+
+# 1 "./Port.h" 1
+# 36 "./Port.h"
+# 1 "./HW.h" 1
+# 37 "./HW.h"
+#pragma config FOSC = HS
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config BOREN = OFF
+#pragma config LVP = OFF
+#pragma config CPD = OFF
+#pragma config WRT = OFF
+#pragma config CP = OFF
+# 89 "./HW.h"
+typedef unsigned char u8_t;
+typedef unsigned int u16_t;
+# 36 "./Port.h" 2
+# 11 "HeartBeat.c" 2
 
 # 1 "./GPIO.h" 1
 # 61 "./GPIO.h"
 u8_t GPIO_Init_Port(u8_t * DirRegAddress,u8_t dir);
 u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
-# 11 "Led.c" 2
+# 12 "HeartBeat.c" 2
 
 # 1 "./Led.h" 1
 # 38 "./Led.h"
@@ -1775,96 +1874,29 @@ u8_t LED_GetState(LED_t led);
 void LED_SetState(LED_t led, LEDState_t state);
 void LED_update(void);
 void LED_Toggle(LED_t led);
-# 12 "Led.c" 2
+# 13 "HeartBeat.c" 2
+
+# 1 "./Util.h" 1
+# 18 "./Util.h"
+void Delay_ms(u16_t delay);
+# 14 "HeartBeat.c" 2
 
 
-u8_t LED_Init(LED_t led, LEDState_t state)
-{
 
 
+void main(void) {
 
 
-    u8_t ret = 1;
-    switch(led)
-    {
-        case LED1:
-            ret = GPIO_Init_Pin(&(TRISB),(0),(0));
-            break;
-        case LED2:
-            ret = GPIO_Init_Pin(&(TRISB),(1),(0));
-            break;
-        case LED3:
-            ret = GPIO_Init_Pin(&(TRISB),(2),(0));
-            break;
-        case LED4:
-            ret = GPIO_Init_Pin(&(TRISB),(3),(0));
-            break;
-        default: ret = 0;
-    }
-    if(ret != 0)
-    {
-        LED_SetState(led,state);
-    }
+    LED_Init(LED1,LED_OFF);
+    LED_Init(LED2,LED_OFF);
 
-    return ret;
-}
-u8_t LED_GetState(LED_t led)
-{
+    while(1){
 
-    u8_t ret = 1;
-    switch(led)
-    {
-        case LED1:
-            ret = (((PORTB) >> (0))& 1);
-            break;
-        case LED2:
-            ret = (((PORTB) >> (1))& 1);
-            break;
-        case LED3:
-            ret = (((PORTB) >> (2))& 1);
-            break;
-        case LED4:
-            ret = (((PORTB) >> (3))& 1);
-            break;
-        default:
-            break;
-    }
-
-    return ret;
-}
-void LED_SetState(LED_t led, LEDState_t state)
-{
-
-    switch(led)
-    {
-        case LED1:
-            (((PORTB))=((PORTB) & ~(1<<(0)))|(state<<(0)));
-            break;
-        case LED2:
-            (((PORTB))=((PORTB) & ~(1<<(1)))|(state<<(1)));
-            break;
-        case LED3:
-            (((PORTB))=((PORTB) & ~(1<<(2)))|(state<<(2)));
-            break;
-        case LED4:
-            (((PORTB))=((PORTB) & ~(1<<(3)))|(state<<(3)));
-            break;
-        default:
-            break;
-    }
-}
-void LED_update(void)
-{
-
-}
-void LED_Toggle(LED_t led)
-{
-    if(LED_GetState(led))
-    {
-        LED_SetState(led,LED_OFF);
-    }
-    else
-    {
-        LED_SetState(led,LED_ON);
+        LED_Toggle(LED1);
+        _delay((unsigned long)((500)*(20000000/4000.0)));
+        LED_Toggle(LED1);
+        LED_Toggle(LED2);
+        _delay((unsigned long)((500)*(20000000/4000.0)));
+        LED_Toggle(LED2);
     }
 }

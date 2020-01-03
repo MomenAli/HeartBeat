@@ -6,8 +6,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [c E865 0 1 .. ]
 [n E865 . LED_OFF LED_ON  ]
 "62 ./GPIO.h
-[; ;./GPIO.h: 62: u8_t GPIO_init_pin(u8_t DirRegAddress ,u8_t pin_number,u8_t dir );
-[v _GPIO_init_pin `(uc ~T0 @X0 0 ef3`uc`uc`uc ]
+[; ;./GPIO.h: 62: u8_t GPIO_Init_Pin(u8_t * DirRegAddress ,u8_t pin_number,u8_t dir );
+[v _GPIO_Init_Pin `(uc ~T0 @X0 0 ef3`*uc`uc`uc ]
 "1375 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
@@ -17,6 +17,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 "216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 216: extern volatile unsigned char PORTB __attribute__((address(0x006)));
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"37 ./HW.h
+[p x FOSC = HS ]
+"38
+[p x WDTE = OFF ]
+"39
+[p x PWRTE = OFF ]
+"40
+[p x BOREN = OFF ]
+"41
+[p x LVP = OFF ]
+"42
+[p x CPD = OFF ]
+"43
+[p x WRT = OFF ]
+"44
+[p x CP = OFF ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -225,8 +241,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Led.c: 23:         case LED1:
 [e :U 98 ]
 "24
-[; ;Led.c: 24:             ret = GPIO_init_pin((TRISB),(0),(0));
-[e = _ret ( _GPIO_init_pin (3 , , _TRISB -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;Led.c: 24:             ret = GPIO_Init_Pin(&(TRISB),(0),(0));
+[e = _ret ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 0 `i `uc -> -> 0 `i `uc ]
 "25
 [; ;Led.c: 25:             break;
 [e $U 96  ]
@@ -234,8 +250,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Led.c: 26:         case LED2:
 [e :U 99 ]
 "27
-[; ;Led.c: 27:             ret = GPIO_init_pin((TRISB),(1),(0));
-[e = _ret ( _GPIO_init_pin (3 , , _TRISB -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;Led.c: 27:             ret = GPIO_Init_Pin(&(TRISB),(1),(0));
+[e = _ret ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 1 `i `uc -> -> 0 `i `uc ]
 "28
 [; ;Led.c: 28:             break;
 [e $U 96  ]
@@ -243,8 +259,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Led.c: 29:         case LED3:
 [e :U 100 ]
 "30
-[; ;Led.c: 30:             ret = GPIO_init_pin((TRISB),(2),(0));
-[e = _ret ( _GPIO_init_pin (3 , , _TRISB -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;Led.c: 30:             ret = GPIO_Init_Pin(&(TRISB),(2),(0));
+[e = _ret ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 2 `i `uc -> -> 0 `i `uc ]
 "31
 [; ;Led.c: 31:             break;
 [e $U 96  ]
@@ -252,8 +268,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Led.c: 32:         case LED4:
 [e :U 101 ]
 "33
-[; ;Led.c: 33:             ret = GPIO_init_pin((TRISB),(3),(0));
-[e = _ret ( _GPIO_init_pin (3 , , _TRISB -> -> 3 `i `uc -> -> 0 `i `uc ]
+[; ;Led.c: 33:             ret = GPIO_Init_Pin(&(TRISB),(3),(0));
+[e = _ret ( _GPIO_Init_Pin (3 , , -> &U _TRISB `*uc -> -> 3 `i `uc -> -> 0 `i `uc ]
 "34
 [; ;Led.c: 34:             break;
 [e $U 96  ]
@@ -486,8 +502,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Led.c: 96:     {
 {
 "97
-[; ;Led.c: 97:         LED_SetState(led,LED_ON);
-[e ( _LED_SetState (2 , _led . `E865 1 ]
+[; ;Led.c: 97:         LED_SetState(led,LED_OFF);
+[e ( _LED_SetState (2 , _led . `E865 0 ]
 "98
 [; ;Led.c: 98:     }
 }
